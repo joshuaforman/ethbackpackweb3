@@ -14,29 +14,27 @@ const app = async () => {
   //let res = await web3.net.listening()
   //console.log(web3.isConnected())
   res = await web3.eth.getAccounts()
-  console.log(res)
+  const options = {
+    from:'0xd779edd6BAcB6e9692B4dB581aAd5c6c2F0C3984',
+    gasPrice:'500000',
+    gas:6000,
+    data:'blah'
+  }
+  // console.log(contractAddress)
   const contract = new web3.eth.Contract(
     ABI,
     contractAddress,
-    {}
+    options
+    // {}
   )
-  //console.log(contract)
-  console.log(web3.eth.initiatedContracts[0].options)
 
-  console.log(contract.mintWithTokenURI)
-  // console.log(claimVerifier.AbstractContract.providersModuleFactory)
+  let test = await contract.methods
+      //.balanceOf('0xd779edd6BAcB6e9692B4dB581aAd5c6c2F0C3984')
+      .ownerOf(3)
+      .call()
 
-  // const options = {
-  //   from:
-  //   gasPrice:
-  //   gas:
-  //   data:
-  // }
-  // const ethBackpack = web3.eth.Contract(
-  //   {},
-  //   contractAddress,
-  //   options
-  // )
+//await test
+ console.log('here',test)
+
 }
-
 app().then(() => {process.exit()})
