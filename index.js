@@ -2,6 +2,7 @@ const Web3 = require('web3')
 const Eth = require('web3-eth')
 //const { contractAddress, ABI } = require('./tronContractConfig')
 const { contractAddress, ABI } = require('./ethBackpackContractConfig')
+const tokenToQuery = 5
 
 
 const app = async () => {
@@ -15,26 +16,52 @@ const app = async () => {
   //console.log(web3.isConnected())
   res = await web3.eth.getAccounts()
   const options = {
-    from:'0xd779edd6BAcB6e9692B4dB581aAd5c6c2F0C3984',
+    from:'0xa42ed1Ac8FB4E9Bc4fc14E1AdcEA608E1EbA874C',
     gasPrice:'500000',
     gas:6000,
-    data:'blah'
   }
   // console.log(contractAddress)
   const contract = new web3.eth.Contract(
     ABI,
-    contractAddress,
-    options
-    // {}
+    contractAddress
+    //,options
   )
+  let test
 
-  let test = await contract.methods
-      //.balanceOf('0xd779edd6BAcB6e9692B4dB581aAd5c6c2F0C3984')
-      .ownerOf(3)
+  test = await contract.methods
+      .balanceOf('0xa42ed1Ac8FB4E9Bc4fc14E1AdcEA608E1EbA874C')
       .call()
+  console.log('balanceOf 0xa42ed1Ac8FB4E9Bc4fc14E1AdcEA608E1EbA874C',test)
 
-//await test
- console.log('here',test)
+  test = await contract.methods
+      .balanceOf('0x41FF2c09C4fAE81267Bd4feA1814Bac711C19004')
+      .call()
+  console.log('balanceOf 0x41FF2c09C4fAE81267Bd4feA1814Bac711C19004',test)
+
+  test = await contract.methods
+      .ownerOf(tokenToQuery)
+      .call()
+  console.log('ownerOf call',test)
+
+  test = await contract.methods
+    .tokenURI(tokenToQuery)
+    .call()
+  console.log('tokenURI call',test)
+
+  test = await contract.methods
+    .mintWithTokenURI('0x41FF2c09C4fAE81267Bd4feA1814Bac711C19004',6,'superRad!')
+  console.log('after mint', test)
+
+  test = await contract.methods
+      .ownerOf(6)
+      .call()
+  console.log('ownerOf call',test)
+
+  test = await contract.methods
+    .tokenURI(6)
+    .call()
+  console.log('tokenURI call',test)
+
 
 }
 app().then(() => {process.exit()})

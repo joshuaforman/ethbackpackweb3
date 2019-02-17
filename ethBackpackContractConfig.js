@@ -1,4 +1,5 @@
-const contractAddress = '0x2A4228372aa560E3220312b31A11F75acbacb463'
+//const contractAddress = '0x2A4228372aa560E3220312b31A11F75acbacb463'
+const contractAddress = '0x95707D79E803C3FF32ECc0CF223AF6416c2b90ad'
 const ABI = [
         {
             "constant": true,
