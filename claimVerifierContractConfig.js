@@ -1,0 +1,3 @@
+const contractAddress = '0xaa24902e67f1669882403530C198bf07c835a91F'
+const ABI = [{"constant":true,"inputs":[{"name":"_identity","type":"address"},{"name":"hash","type":"bytes"},{"name":"claimType","type":"uint256"}],"name":"verify","outputs":[{"name":"","type":"bool"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"sig","type":"bytes"},{"name":"dataHash","type":"bytes32"}],"name":"getRecoveredAddress","outputs":[{"name":"addr","type":"address"}],"payable":false,"stateMutability":"pure","type":"function"}]
+module.exports = { contractAddress, ABI }

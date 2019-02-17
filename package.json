@@ -1,0 +1,15 @@
+{
+  "name": "ethbackpack",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "web3": "^1.0.0-beta.46",
+    "web3-eth": "^1.0.0-beta.46"
+  }
+}
